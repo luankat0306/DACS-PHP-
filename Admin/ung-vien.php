@@ -18,7 +18,7 @@
         $date = $_POST["date"];
         $gender = strtolower($_POST["gender"]);
         $address = $_POST["address"];
-        $pass = md5($_POST["pass"]);
+        $pass = $_POST["pass"];
 
         
         $sql = "INSERT INTO nguoitimviec (HoTen, SDT, Email, NgaySinh, GioiTinh, DiaChi, Password) VALUES ('$hoTen', '$sdt', '$email', '$date', '$gender', '$address', '$pass')";

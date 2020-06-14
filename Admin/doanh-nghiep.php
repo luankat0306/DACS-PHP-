@@ -18,7 +18,7 @@
         $tenLH = $_POST["TenLH"];
         $website = ($_POST["website"]);
         $address = $_POST["address"];
-        $pass = md5($_POST["pass"]);
+        $pass = $_POST["pass"];
 
         
         $sql = "INSERT INTO congty (TenCongTy, TenNguoiLienHe, SDT, Email, DiaChi, Website, Password) VALUES ('$tenCT', '$tenLH', '$sdt', '$email', '$address', '$website', '$pass')";
