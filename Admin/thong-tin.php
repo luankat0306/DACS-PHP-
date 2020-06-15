@@ -23,6 +23,7 @@
 				$username = $row['Username'];
 				$image = $row['Image'];
 			}
+			
 			if (isset($_POST['update'])) {
 				$id = $_POST['id'];
 				$hoTen = $_POST['hoTen'];
@@ -30,12 +31,15 @@
 				$email = $_POST["email"];
 				$username = $_POST["username"];
 				$pass = md5($_POST["pass"]);
-				/* cái profileImg là name của inputinput */
-				$image = time() . '_ ' . $_FILES['profileImg']['name'];
-
-				$target = 'image/ ' .$image;
-
-				move_uploaded_file($_FILES['profileImg']['tmp_name'], $target); 
+				if (isset($_POST['profileImg'])){
+					/* cái profileImg là name của inputinput */
+					$image = $_FILES['profileImg']['name'];
+	
+					$target = 'image/ ' .$image;
+	
+					move_uploaded_file($_FILES['profileImg']['tmp_name'], $target); 
+				}
+				
 				if($pass != $passCheck){
 					$_SESSION['message'] = "Mật Khẩu Không Đúng Mời Nhập Lại!";
 					$_SESSION['msg_type'] = "danger";
@@ -63,8 +67,7 @@
 <!-- Avatar -->
 	<div class = "form-group text-center">
 			<img src="image/ <?php echo $image; ?>" onclick = "triggerClick()" id = "profileDisplay">
-			<label>Hình đại diện</label><br>
-			<input type="file" name="profileImg" onchange="displayImg(this)" id = "profileImg" value = "<?php echo $image; ?>" style = "display: none;">
+			<input type="file" name="profileImg" onchange="displayImg(this)" id = "profileImg"  style = "display: none;">
 	</div>
 	<div class = "form-add">
 
@@ -75,7 +78,7 @@
 
 			<div class = "label-item">
 				<label>SĐT:</label><br>
-				<input type = "tel" name = "sdt" value = "<?php echo $sdt; ?>">
+				<input type = "tel" name = "sdt"  pattern="[0-9]{10}" value = "<?php echo $sdt; ?>">
 			</div>  
 
 			<div class = "label-item">
@@ -92,7 +95,7 @@
 			
 			<div class = "label-item">
 				<label>Password:</label><br>
-				<input type="password" name="pass">
+				<input type="password" placeholder="Nhập mật khẩu xác nhận " name="pass" reqired>
 			</div>
 
 			
