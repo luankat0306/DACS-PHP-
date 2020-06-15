@@ -3,7 +3,6 @@
     $sdt = '';
     $email = '';
     $username = '';
-    $image = '';
 	$pass = '';
 
     $update = false;
@@ -16,41 +15,43 @@
 			$sql =("SELECT * FROM admin WHERE id =$id");
 			$query = $conn->query($sql) or die($conn -> error());
 	
-			while ($row =$query->fetch_array()) {
-				$pass = $row['Password'];
+			while ($row =$query->fetch_assoc()) {
+				$passCheck = $row['Password'];
 				$hoTen = $row['HoTen'];
 				$sdt = $row['SDT'];
 				$email = $row['Email'];
 				$username = $row['Username'];
 				$image = $row['Image'];
 			}
-		}
-		
-	
-		if (isset($_POST['update'])) {
-			$id = $_POST['id'];
-			$hoTen = $_POST['hoTen'];
-			$sdt = $_POST["sdt"];
-			$email = $_POST["email"];
-			$username = $_POST["username"];
-			$pass = md5($_POST["pass"]);
-			/* cái profileImg là name của inputinput */
-			$image = time() . '_ ' . $_FILES['profileImg']['name'];
+			if (isset($_POST['update'])) {
+				$id = $_POST['id'];
+				$hoTen = $_POST['hoTen'];
+				$sdt = $_POST["sdt"];
+				$email = $_POST["email"];
+				$username = $_POST["username"];
+				$pass = md5($_POST["pass"]);
+				/* cái profileImg là name của inputinput */
+				$image = time() . '_ ' . $_FILES['profileImg']['name'];
 
-			$target = 'image/ ' .$image;
+				$target = 'image/ ' .$image;
+
+				move_uploaded_file($_FILES['profileImg']['tmp_name'], $target); 
+				if($pass != $passCheck){
+					$_SESSION['message'] = "Mật Khẩu Không Đúng Mời Nhập Lại!";
+					$_SESSION['msg_type'] = "danger";
+				} else {
+					$sql = ("UPDATE admin SET HoTen = '$hoTen', SDT = '$sdt', Email = '$email', Username = '$username', Image = '$image' WHERE id =$id");
+					$query = $conn -> query($sql);
+				
+					$_SESSION['message'] = "Sửa Thành Công";
+					$_SESSION['msg_type'] = "success";
+				}
+
 			
-			move_uploaded_file($_FILES['profileImg']['tmp_name'], $target); 
-	
-			$sql = ("UPDATE admin SET HoTen = '$hoTen', SDT = '$sdt', Email = '$email', Username = '$username', Image = '$image', Password = '$pass' WHERE id =$id");
-			$query = $conn -> query($sql);
-	
-			$_SESSION['message'] = "Sửa Thành Công";
-			$_SESSION['msg_type'] = "success";
-	
-			header('Location: index.php?tab=thong-tin');
+				header('Location: index.php?tab=thong-tin');
+			}
 		}
 ?>
-
 <div class = "add">
 
 <div class="add-label">
@@ -63,35 +64,35 @@
 	<div class = "form-group text-center">
 			<img src="image/ <?php echo $image; ?>" onclick = "triggerClick()" id = "profileDisplay">
 			<label>Hình đại diện</label><br>
-			<input type="file" name="profileImg" onchange="displayImg(this)" id = "profileImg" value = "<?php echo $image ?>" style = "display: none;">
+			<input type="file" name="profileImg" onchange="displayImg(this)" id = "profileImg" value = "<?php echo $image; ?>" style = "display: none;">
 	</div>
 	<div class = "form-add">
 
 			<div class = "label-item">
 				<label>Họ Tên:</label><br>
-				<input type = "text" name = "hoTen" value = "<?php echo $hoTen ?>">
+				<input type = "text" name = "hoTen" value = "<?php echo $hoTen; ?>">
 			</div> 
 
 			<div class = "label-item">
 				<label>SĐT:</label><br>
-				<input type = "tel" name = "sdt" value = "<?php echo $sdt ?>">
+				<input type = "tel" name = "sdt" value = "<?php echo $sdt; ?>">
 			</div>  
 
 			<div class = "label-item">
 				<label>Email:</label><br>
 				<input type="export default class className extends baseclassName {
 				
-				};" placeholder="abc@gmail.com" name="email" value = "<?php echo $email ?>">
+				};" placeholder="abc@gmail.com" name="email" value = "<?php echo $email; ?>">
 			</div>
 			
 			<div class = "label-item">
 				<label>Username:</label><br>
-				<input type="text" name="username" value = "<?php echo $username ?>"  >
+				<input type="text" name="username" value = "<?php echo $username; ?>"  >
 			</div>
 			
 			<div class = "label-item">
 				<label>Password:</label><br>
-				<input type="password" name="pass" value = "<?php echo $pass ?>">
+				<input type="password" name="pass">
 			</div>
 
 			
