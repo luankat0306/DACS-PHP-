@@ -50,7 +50,10 @@ if (isset($_POST['submit-pass'])){
       $web= $_POST['web'];
       $sdt = $_POST['phone'];
       $address = $_POST['address'];
-      $description = nl2br($_POST['description']);
+      if($_POST['description'] != ""){
+          $description = nl2br($_POST['description']);
+      }
+
 
       $sql = ("UPDATE congty SET TenCongTy = '$tenCT', TenNguoiLienHe = '$nameContact', Website = '$web', SDT = '$sdt', DiaChi = '$address', MoTa='$description'  WHERE id_CongTy =$id");
       $query = $connect -> query($sql);

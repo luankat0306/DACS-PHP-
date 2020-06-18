@@ -104,6 +104,7 @@ hr {
   
   .wrapper .right .info_data,
   .wrapper .right .personalinfo_data{
+    margin-right: 10px;
     display: flex;
     justify-content: space-between;
   }

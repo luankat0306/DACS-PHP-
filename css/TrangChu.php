@@ -256,7 +256,7 @@ MENU STYLES
 .box-searrch h1 {
   padding-bottom: 10px;
   color: whitesmoke;
-  text-shadow: 2px 4px 5px rgb(0, 0, 0, 0.2);
+  text-shadow: 2px 5px 4px rgb(0, 0, 0, 0.5);
   font-weight: 700;
   font-size: 40px;
   margin: 0px 25%;
