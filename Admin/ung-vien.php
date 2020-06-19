@@ -74,16 +74,16 @@
         $date = $_POST["date"];
         $gender = $_POST["gender"];
         $address = $_POST["address"];
-        $pass = md5($_POST["pass"]);
+        $pass = $_POST["pass"];
 
         $sql = ("UPDATE nguoitimviec SET HoTen = '$hoTen', SDT = '$sdt', Email = '$email', NgaySinh = '$date', GioiTinh = '$gender', DiaChi = '$address', Password = '$pass' WHERE id =$id");
         $query = $conn -> query($sql);
 
         if($query!=0){
-            $_SESSION['message'] = "Xóa Thành Công";
+            $_SESSION['message'] = "Sửa Thành Công";
             $_SESSION['msg_type'] = "success";
         } else{
-            $_SESSION['message'] = "Không thể xóa ứng viên đã nộp hồ sơ";
+            $_SESSION['message'] = "Không thể sửa ứng viên đã nộp hồ sơ";
             $_SESSION['msg_type'] = "success";
         }
 

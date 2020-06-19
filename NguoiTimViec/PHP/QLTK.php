@@ -262,7 +262,9 @@ if (isset($_POST['submit-pass'])){
       <hr>
       <!-- password -->
       <label for="psw"><b>Mật Khẩu</b></label>
-      <input class="form-control" type="password" placeholder="Nhập Mật Khẩu Mới" name="psw" minlength="5" required>
+      <input class="form-control" type="password" placeholder="Nhập Mật Khẩu Mới" name="psw" id="psw" minlength="5" required>
+      <label for="psw"><b>Nhập Lại Mật Khẩu</b></label>
+      <input class="form-control" type="password" placeholder="Nhập Lại Mật Khẩu" name="pswCheck" id="confirm_psw" minlength="5" required>
       <div class="clearfix">
         <button name="submit-pass" type="submit" class="confirmbtn"><b>Xác Nhận</b></button>
         <button type="button" onclick="document.getElementById('id1').style.display='none'" class="cancelbtn"><b>Hủy</b></button>
@@ -494,3 +496,18 @@ if (isset($_POST['submit-pass'])){
     </div>
   </form>
 </div>
+<script>
+  var password = document.getElementById("psw")
+  , confirm_password = document.getElementById("confirm_psw");
+
+  function validatePassword(){
+    if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Mật khẩu không trùng khớp");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+}
+
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+</script>

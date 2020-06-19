@@ -11,8 +11,9 @@
     $date = $_POST['date'];
     $description =nl2br($_POST['description']);
     $mucLuong = $_POST['mucLuong'];
+    $donVi = $_POST['donVi'];
     $sql = ("INSERT INTO dangtincongviec ( id_CongTy, TieuDe, id_NganhNghe, ViTriTD, TinhThanh, SoLuong, HanNop, MoTa, MucLuong)
-      VALUES ('$id', '$tieuDe', '$idNganhNghe','$viTriTD','$place','$soLuong','$date','$description', '$mucLuong' )");
+      VALUES ('$id', '$tieuDe', '$idNganhNghe','$viTriTD','$place','$soLuong','$date','$description', '$mucLuong $donVi' )");
 
     $query = $connect -> query($sql);
     $alert="Đăng tin việc làm thành công";

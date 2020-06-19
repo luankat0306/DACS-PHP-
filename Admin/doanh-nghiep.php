@@ -82,10 +82,10 @@
         $query = $conn -> query($sql);
 
         if($query!=0){
-            $_SESSION['message'] = "Xóa Thành Công";
+            $_SESSION['message'] = "Sửa Thành Công";
             $_SESSION['msg_type'] = "success";
         } else{
-            $_SESSION['message'] = "Không thể xóa ứng viên đã nộp hồ sơ";
+            $_SESSION['message'] = "Không thể sửa ứng viên đã nộp hồ sơ";
             $_SESSION['msg_type'] = "success";
         }
 

@@ -19,7 +19,7 @@
       </div>
       <button type="submit" name="login" style="width: 20%; margin-left: 32%; font-weight: bolder;">
       Đăng Nhập</button>
-      <button onclick="location.href='TrangChu.php'" class="cancelbtn1" type="button"><b>Hủy</b></button>
+      <button onclick="location.href='../../TrangChu.php'" class="cancelbtn1" type="button"><b>Hủy</b></button>
       <button onclick="document.getElementById('id01').style.display='block'" class="signupbtn1" type="button"><b>Bạn Chưa Có Tài Khoản?</b></button>
     </div>
   </form>
@@ -42,7 +42,7 @@
       <label for="psw"><b>Mật Khẩu</b></label>
       <input class="form-control" type="password" placeholder="Nhập Vào Mật Khẩu" name="psw" id="psw" minlength="5" required>
       <label for="psw"><b>Nhập Lại Mật Khẩu</b></label>
-      <input class="form-control" type="password" placeholder="Nhập Vào Mật Khẩu" name="pswCheck" id="confirm_psw" minlength="5" required>
+      <input class="form-control" type="password" placeholder="Nhập Lại Mật Khẩu" name="pswCheck" id="confirm_psw" minlength="5" required>
       <!-- full name -->
       <label for="fullname"><b>Họ Và Tên</b></label>
       <input class="form-control" type="text" placeholder="Nhập Vào Họ Và Tên" name="fullname" required>
